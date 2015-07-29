@@ -9,27 +9,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
- * As a user,
- * I would like to search ,
- * So that I can find what I need quickly.
+ * As a user, I would like to search the bed I need, So that I can find what I
+ * need quickly.
  * 
  */
 
 public class TestSearch {
-	
+
 	static WebDriver driver = new FirefoxDriver();
-	  private String baseUrl;
+	private String baseUrl;
 
+	@Before
+	public void setUp() throws Exception {
+		baseUrl = "https://offerupnow.com/";
+		driver.get(baseUrl);
+		;
+	}
 
-	  @Before
-	  public void setUp() throws Exception {
-	    baseUrl = "https://offerupnow.com/";
-	    driver.get(baseUrl);;
-	  }
-	  
 	// Given that I am on the main page
 	// When I enter "table" in the search field
 	// Then I see that filter word "table" and tables in sales.
+
 	 
 	  @Test
 	  public void testSearchBed() throws Exception {
@@ -97,5 +97,17 @@ public class TestSearch {
 	
 	
 
+	@Test
+	public void testSearchTable() throws Exception {
+
+		driver.findElement(By.name("q")).clear();
+		driver.findElement(By.name("q")).sendKeys("bed");
+		driver.findElement(By.id("search-submit-button")).click();
+
+		String title = driver.getTitle();
+		System.out.println(title);
+		assertTrue(title.contains("bed"));
+
+	}
 
 }

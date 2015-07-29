@@ -45,9 +45,9 @@ public class TestLogin {
 			Actions builder=new Actions(driver);
 			WebElement nametag=driver.findElement(By.xpath("//*[@id='header-nav']/div[2]/div[3]/div/div/ul/li[2]/a"));
 			builder.moveToElement(nametag).perform();
-			if(driver.findElement(By.xpath("//*[@id='header-nav']/div[2]/div[3]/div/div/ul/li[2]/div/ul/li[5]/a")).isDisplayed()){ 
+			if(driver.findElement(By.xpath("//*[@id='header-nav']/div[2]/div[3]/div/div/ul/li[2]/div/ul/li[7]/a")).isDisplayed()){ 
 			    System.out.println("Logout button is coming"); 
-			    driver.findElement(By.xpath("//*[@id='header-nav']/div[2]/div[3]/div/div/ul/li[2]/div/ul/li[5]/a")).click();
+			    driver.findElement(By.xpath("//*[@id='header-nav']/div[2]/div[3]/div/div/ul/li[2]/div/ul/li[7]/a")).click();
 			   }else{
 				   System.out.println("No Logout button present");
 			   }
