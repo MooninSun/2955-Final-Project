@@ -30,9 +30,10 @@ public class TestLogin {
 	public void RightLoginTest() {
 
 		driver.findElement(By.id("login")).click();
-		// Enter username "lanzhang.lemon@gmail.com", password "lzhang11"
+		// Enter the right email
 		driver.findElement(By.id("id_login")).sendKeys(
 				"zhanglan_mini@hotmail.com");
+		// Enter the right password
 		driver.findElement(By.id("id_password")).sendKeys("Zhanglan");
 
 		// Look for the login button and click to login
@@ -41,8 +42,7 @@ public class TestLogin {
 		submitButton.click();
 
 		// Check whether or not it login successfully, if successful, the title
-		// of
-		// this page will change.
+		// of this page will change.
 		try {
 			assertTrue(driver.getTitle().contains("My Offers"));
 			// We need to logout first to operate other test cases.
