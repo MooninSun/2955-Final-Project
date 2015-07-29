@@ -1,4 +1,5 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -85,7 +86,7 @@ public class TestLogin {
 		}
 	}
 	
-	// Given that I have forgot my password and in the login page.
+		// Given that I have forgot my password and in the login page.
 		// When I click the link to reset my password and type in my email.
 		// Then I see that the successed statement displays in the page.
 		@Test
