@@ -71,8 +71,8 @@ public class TestSearch {
 		 
 		 
 	//Given that I am on the page which is the result of bed search
-	//when I enter some meaningless word in the search field
-	//Then I see "no offer found" message.
+	//when I click "sort:closest"
+	//Then I see sort selection
 		  
 		 @Test
 		 public void testSort() throws Exception{

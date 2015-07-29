@@ -9,8 +9,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 
-
+/**
+ * As a user,
+ * I would like to watch items,
+ * So that I can save items I interested and find them quickly.
+ * 
+ */
 public class TestWatch {
 
 	 WebDriver driver = new FirefoxDriver();
@@ -37,8 +43,8 @@ public class TestWatch {
 
 	  
 	// Given that I am on the item page and I have logged in.
-	// When I cliked watch
-	// Then I add this item to watching list.
+	// When I click watch
+	// Then I watched the item.
 	 
 	  @Test
 	  public void testWatchItem() throws Exception {
@@ -57,6 +63,9 @@ public class TestWatch {
 		  
 	  }
 	  
+		// Given that I am on the item page and I have logged in.
+		// When I click watching
+		// Then I unwatched the item.
 		 
 	  @Test
 	  public void testUnwatchItem() throws Exception {
@@ -66,7 +75,7 @@ public class TestWatch {
 			  driver.findElement(By.linkText("Watch")).click();
 			  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		  }
-		 //click watch button
+		 //click watching button
 		  driver.findElement(By.linkText("Watching")).click();
 		  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		 String change= driver.findElement(By.className("add_to_watchlist_btn")).getText();
@@ -74,13 +83,26 @@ public class TestWatch {
 		  
 	  }
 	  
+		// Given that I have logged in and I have watched a chair.
+		// When I click my offer and then click watching 
+		// Then I see what I watched included the chair
+	  
 	  @Test
 	  public void testWatchingList() throws Exception {
 		  
 		    driver.get(baseUrl + "/item/myoffers/");
+		    Actions builder=new Actions(driver);
+		    
+		    //find log name
+			WebElement nametag=driver.findElement(By.className("display-name"));
+			
+			//mouse over the name
+			builder.moveToElement(nametag).perform();
 		    driver.findElement(By.linkText("My Offers")).click();
+		    
+		    //click the watching tab
 		    driver.findElement(By.cssSelector("a[href='/item/watchingoffers/']")).click();
-		    driver.findElement(By.linkText("chair")).click();
+		    assertTrue(driver.findElement(By.linkText("chair")).isDisplayed());
 		  
 	  }
 		  
