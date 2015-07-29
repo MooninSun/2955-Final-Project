@@ -10,6 +10,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
+
+/**
+ * As a user, I would like to login the website.
+ * So I can get personal service.
+ * 
+ */
+
 public class TestLogin {
 
 	static WebDriver driver = new FirefoxDriver();
@@ -21,7 +28,7 @@ public class TestLogin {
 
 	// Given that I have a right account and a right password
 	// When I log into the website
-	// Then I see that the logout button displays in the page.
+	// Then I see that the title of page changed.
 	@Test
 	public void RightLoginTest() {
 
@@ -31,21 +38,22 @@ public class TestLogin {
 				"zhanglan_mini@hotmail.com");
 		driver.findElement(By.id("id_password")).sendKeys("Zhanglan");
 
-		// Look for the login button (in the login div) and click to login
+		// Look for the login button and click to login
 		WebElement submitButton = driver.findElement(By
 				.xpath("//*[@id='login-form']/div[3]/input"));
 		submitButton.click();
 
-		// Check whether or not it login successfully, if successful, the logout
-		// button should show
+		// Check whether or not it login successfully, if successful, the title of
+		// this page will change.
 		try {
-			// WebElement logoutButton = driver.findElement(By
-			// .cssSelector("a[href='/comet/logout.do']"));
 			assertTrue(driver.getTitle().contains("My Offers"));
 			// Create action class object
 			Actions builder=new Actions(driver);
+			//find the target object and trigger the mouseover() function
 			WebElement nametag=driver.findElement(By.xpath("//*[@id='header-nav']/div[2]/div[3]/div/div/ul/li[2]/a"));
 			builder.moveToElement(nametag).perform();
+			//When the logout button show up
+			//click on it.
 			if(driver.findElement(By.xpath("//*[@id='header-nav']/div[2]/div[3]/div/div/ul/li[2]/div/ul/li[7]/a")).isDisplayed()){ 
 			    System.out.println("Logout button is coming"); 
 			    driver.findElement(By.xpath("//*[@id='header-nav']/div[2]/div[3]/div/div/ul/li[2]/div/ul/li[7]/a")).click();
@@ -64,12 +72,13 @@ public class TestLogin {
 	public void WrongPasswordTest() {
 
 		driver.findElement(By.id("login")).click();
-		// Enter username "lanzhang.lemon@gmail.com", password "lzhang11"
+		// Enter the right email.
 		driver.findElement(By.id("id_login")).sendKeys(
 				"zhanglan_mini@hotmail.com");
+		//Enter the wrong password.
 		driver.findElement(By.id("id_password")).sendKeys("1111");
 
-		// Look for the login button (in the login div) and click to login
+		// Look for the submit button (in the login div) and click to login
 		WebElement submitButton = driver.findElement(By
 				.xpath("//*[@id='login-form']/div[3]/input"));
 		submitButton.click();
