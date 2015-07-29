@@ -49,7 +49,7 @@ public class TestCategory {
 	  
 		// Given that I am on the "Baby & Kids" page
 		// When I click Baby & Kids
-		// Then I see that filter word "Baby & Kids" and items related to "Baby & Kids".
+		// Then I see that filter word "Baby & Kids" and "bed"  and items related to bed of Baby & Kids.
 	  
 	  @Test
 	  public void testNarrowBaby() throws Exception {
